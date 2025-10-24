@@ -1,31 +1,40 @@
-import math from 'mathjs';
-
-export function add(a, b) {
-    return math.add(a, b);
+// Use native JavaScript implementations and CommonJS exports so Jest (CommonJS) can require this file
+function add(a, b) {
+    return a + b;
 }
 
-export function subtract(a, b) {
-    return math.subtract(a, b);
+function subtract(a, b) {
+    return a - b;
 }
 
-export function multiply(a, b) {
-    return math.multiply(a, b);
+function multiply(a, b) {
+    return a * b;
 }
 
-export function divide(a, b) {
+function divide(a, b) {
     if (b === 0) {
-        throw new Error("Division by zero is not allowed.");
+        // message matches tests expecting "Cannot divide by zero"
+        throw new Error("Cannot divide by zero");
     }
-    return math.divide(a, b);
+    return a / b;
 }
 
-export function power(a, b) {
-    return math.pow(a, b);
+function power(a, b) {
+    return Math.pow(a, b);
 }
 
-export function sqrt(a) {
+function sqrt(a) {
     if (a < 0) {
         throw new Error("Square root of negative number is not allowed.");
     }
-    return math.sqrt(a);
+    return Math.sqrt(a);
 }
+
+module.exports = {
+    add,
+    subtract,
+    multiply,
+    divide,
+    power,
+    sqrt,
+};
